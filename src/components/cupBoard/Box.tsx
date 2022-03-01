@@ -3,6 +3,7 @@ import { BoxType } from "../../interface";
 import { boxHelper } from "../../utility";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { useLoader } from "@react-three/fiber";
+import { useEffect } from "react";
 
 interface Props extends BoxType {
     isHovered?: boolean;
@@ -15,6 +16,15 @@ export const Box = ({ type, isHovered, handleFrontHover }: Props) => {
 
     const [ref, api] = useBox(() => ({ mass: 0, position: position as Triplet }));
     // const colorHover = isHovered ? "red" : "transparent";
+
+    useEffect(() => {
+        if (type === "frontDoor" && isHovered) {
+            document.body.style.cursor = "pointer";
+            return;
+        }
+
+        document.body.style.cursor = "initial";
+    }, [isHovered, type]);
 
     return (
         <mesh
