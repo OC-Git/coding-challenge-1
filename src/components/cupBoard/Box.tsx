@@ -10,11 +10,11 @@ interface Props extends BoxType {
 }
 
 export const Box = ({ type, isHovered, handleFrontHover }: Props) => {
-    const colorMap = useLoader(TextureLoader, "PavingStones092_1K_Color.jpg");
+    const colorMap = useLoader(TextureLoader, "Wood066_1K_Color.jpg");
     const { position, measurement } = boxHelper({ type });
 
     const [ref, api] = useBox(() => ({ mass: 0, position: position as Triplet }));
-    const colorHover = isHovered ? "red" : "black";
+    // const colorHover = isHovered ? "red" : "transparent";
 
     return (
         <mesh
@@ -27,7 +27,7 @@ export const Box = ({ type, isHovered, handleFrontHover }: Props) => {
             }}
         >
             <boxBufferGeometry attach={"geometry"} args={measurement} />
-            <meshStandardMaterial map={colorMap} color={colorHover} />
+            <meshStandardMaterial map={colorMap} />
         </mesh>
     );
 };
