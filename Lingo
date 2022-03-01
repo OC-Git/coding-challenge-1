@@ -1,0 +1,14 @@
+What is a Mesh?
+Object to describe triangular polygons 
+
+Was is a Material?
+Appearance of objects
+They are rendered-independent
+
+What renderer are there?
+
+What is BufferGeometry?
+An efficient way to reduce computational costs by passing it to the GPU
+
+What is useFrame?
+
