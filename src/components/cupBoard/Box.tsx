@@ -37,7 +37,7 @@ export const Box = ({ type, isHovered, handleFrontHover }: Props) => {
             }}
         >
             <boxBufferGeometry attach={"geometry"} args={measurement} />
-            <meshStandardMaterial map={colorMap} />
+            <meshStandardMaterial map={colorMap} color={"#0000ffa7"} />
         </mesh>
     );
 };

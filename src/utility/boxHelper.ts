@@ -26,7 +26,7 @@ export const boxHelper = ({ type }: BoxType) => {
     }
 
     if (type === "back") {
-        measurement = [12, 24, 0.2];
+        measurement = [12.2, 24, 0.2];
         position = [0, 12, -3];
     }
 
@@ -36,7 +36,7 @@ export const boxHelper = ({ type }: BoxType) => {
     }
 
     if (type === "frontDoor") {
-        measurement = [12, 24, 0.2];
+        measurement = [12.2, 24, 0.2];
         position = [0, 12, 3];
     }
 
