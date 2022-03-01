@@ -4,21 +4,30 @@ import { boxHelper } from "../../utility";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { useLoader } from "@react-three/fiber";
 
-export const Box = ({ type }: BoxType) => {
+interface Props extends BoxType {
+    isHovered?: boolean;
+    handleFrontHover?: () => void;
+}
+
+export const Box = ({ type, isHovered, handleFrontHover }: Props) => {
     const colorMap = useLoader(TextureLoader, "PavingStones092_1K_Color.jpg");
     const { position, measurement } = boxHelper({ type });
 
     const [ref, api] = useBox(() => ({ mass: 0, position: position as Triplet }));
+    const colorHover = isHovered ? "red" : "black";
+
     return (
         <mesh
             ref={ref}
             position={position}
+            onPointerOver={handleFrontHover}
+            onPointerOut={handleFrontHover}
             onClick={() => {
                 api.velocity.set(0, 2, 0);
             }}
         >
             <boxBufferGeometry attach={"geometry"} args={measurement} />
-            <meshStandardMaterial map={colorMap} />
+            <meshStandardMaterial map={colorMap} color={colorHover} />
         </mesh>
     );
 };

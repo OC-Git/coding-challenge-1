@@ -1,3 +1,3 @@
 export interface BoxType {
-    type: "top" | "bottom" | "sidewallLeft" | "sidewallRight" | "front" | "shelf";
+    type: "top" | "bottom" | "sidewallLeft" | "sidewallRight" | "back" | "shelf" | "frontDoor";
 }

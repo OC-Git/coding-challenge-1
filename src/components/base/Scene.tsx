@@ -2,8 +2,16 @@ import { OrbitControls } from "@react-three/drei";
 import { Physics } from "@react-three/cannon";
 import { Box } from "../cupBoard";
 import { Plane } from "../base";
+import { useState } from "react";
 
 export const Scene = () => {
+    const [isHovered, setIsHovered] = useState<boolean>(false);
+
+    const onHandleFrontHover = () => {
+        console.log("now");
+        setIsHovered((prev) => !prev);
+    };
+
     return (
         <>
             <OrbitControls />
@@ -14,8 +22,9 @@ export const Scene = () => {
                 <Box type={"sidewallLeft"} />
                 <Box type={"sidewallRight"} />
                 <Box type={"bottom"} />
-                <Box type={"front"} />
+                <Box type={"back"} />
                 <Box type={"shelf"} />
+                <Box type={"frontDoor"} isHovered={isHovered} handleFrontHover={onHandleFrontHover} />
                 <Plane />
             </Physics>
         </>
