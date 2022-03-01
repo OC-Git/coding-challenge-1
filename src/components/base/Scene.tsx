@@ -13,7 +13,6 @@ export const Scene = () => {
     };
 
     const onHandleFrontDoor = () => {
-        console.log("go");
         setIsOpen((prev) => !prev);
     };
 

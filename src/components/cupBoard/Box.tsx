@@ -1,4 +1,4 @@
-import { PublicApi, Triplet, useBox } from "@react-three/cannon";
+import { Triplet, useBox } from "@react-three/cannon";
 import { BoxType } from "../../interface";
 import { boxHelper } from "../../utility";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
@@ -9,7 +9,7 @@ interface Props extends BoxType {
     isHovered?: boolean;
     isOpen?: boolean;
     handleFrontHover?: () => void;
-    handleFrontDoor?: (api: PublicApi) => void;
+    handleFrontDoor?: () => void;
 }
 
 export const Box = ({ type, isHovered, isOpen, handleFrontHover, handleFrontDoor }: Props) => {
@@ -30,12 +30,13 @@ export const Box = ({ type, isHovered, isOpen, handleFrontHover, handleFrontDoor
 
     useEffect(() => {
         if (isOpen) {
-            api.rotation.set(0, -90, 0);
+            // api.position.set(0, 0, 10);
+            api.rotation.set(0, Math.PI / 2, 0);
             return;
         }
 
         api.rotation.set(0, 0, 0);
-    }, [api.rotation, isOpen]);
+    }, [api, isOpen]);
 
     return (
         <mesh
@@ -44,7 +45,7 @@ export const Box = ({ type, isHovered, isOpen, handleFrontHover, handleFrontDoor
             onPointerOver={handleFrontHover}
             onPointerOut={handleFrontHover}
             //@ts-ignore
-            onClick={() => handleFrontDoor(api)}
+            onClick={handleFrontDoor}
         >
             <boxBufferGeometry attach={"geometry"} args={measurement} />
             <meshStandardMaterial map={colorMap} color={colorHover} />

@@ -37,7 +37,7 @@ export const boxHelper = ({ type }: BoxType) => {
 
     if (type === "frontDoor") {
         measurement = [11.6, 23.6, 0.2];
-        position = [-0, 11.9, 2.8];
+        position = [0, 11.9, 2.8];
     }
 
     return { measurement, position };
