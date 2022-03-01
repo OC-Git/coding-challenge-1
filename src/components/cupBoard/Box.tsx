@@ -1,4 +1,4 @@
-import { Triplet, useBox } from "@react-three/cannon";
+import { PublicApi, Triplet, useBox } from "@react-three/cannon";
 import { BoxType } from "../../interface";
 import { boxHelper } from "../../utility";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
@@ -7,16 +7,17 @@ import { useEffect } from "react";
 
 interface Props extends BoxType {
     isHovered?: boolean;
+    isOpen?: boolean;
     handleFrontHover?: () => void;
-    color?: string;
+    handleFrontDoor?: (api: PublicApi) => void;
 }
 
-export const Box = ({ type, isHovered, handleFrontHover, color }: Props) => {
+export const Box = ({ type, isHovered, isOpen, handleFrontHover, handleFrontDoor }: Props) => {
     const colorMap = useLoader(TextureLoader, "Wood066_1K_Color.jpg");
     const { position, measurement } = boxHelper({ type });
 
     const [ref, api] = useBox(() => ({ mass: 0, position: position as Triplet }));
-    // const colorHover = isHovered ? "red" : "none";
+    const colorHover = isHovered ? "red" : "blue";
 
     useEffect(() => {
         if (type === "frontDoor" && isHovered) {
@@ -27,18 +28,26 @@ export const Box = ({ type, isHovered, handleFrontHover, color }: Props) => {
         document.body.style.cursor = "initial";
     }, [isHovered, type]);
 
+    useEffect(() => {
+        if (isOpen) {
+            api.rotation.set(0, -90, 0);
+            return;
+        }
+
+        api.rotation.set(0, 0, 0);
+    }, [api.rotation, isOpen]);
+
     return (
         <mesh
             ref={ref}
             position={position}
             onPointerOver={handleFrontHover}
             onPointerOut={handleFrontHover}
-            onClick={() => {
-                api.velocity.set(0, 2, 0);
-            }}
+            //@ts-ignore
+            onClick={() => handleFrontDoor(api)}
         >
             <boxBufferGeometry attach={"geometry"} args={measurement} />
-            <meshStandardMaterial map={colorMap} color={color} />
+            <meshStandardMaterial map={colorMap} color={colorHover} />
         </mesh>
     );
 };

@@ -6,10 +6,15 @@ import { useState } from "react";
 
 export const Scene = () => {
     const [isHovered, setIsHovered] = useState<boolean>(false);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const onHandleFrontHover = () => {
-        console.log("now");
         setIsHovered((prev) => !prev);
+    };
+
+    const onHandleFrontDoor = () => {
+        console.log("go");
+        setIsOpen((prev) => !prev);
     };
 
     return (
@@ -24,7 +29,13 @@ export const Scene = () => {
                 <Box type={"sidewallLeft"} />
                 <Box type={"sidewallRight"} />
                 <Box type={"shelf"} />
-                <Box type={"frontDoor"} isHovered={isHovered} handleFrontHover={onHandleFrontHover} />
+                <Box
+                    type={"frontDoor"}
+                    isHovered={isHovered}
+                    isOpen={isOpen}
+                    handleFrontHover={onHandleFrontHover}
+                    handleFrontDoor={onHandleFrontDoor}
+                />
                 <Plane />
             </Physics>
         </>

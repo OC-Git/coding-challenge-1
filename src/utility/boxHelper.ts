@@ -5,13 +5,6 @@ export const boxHelper = ({ type }: BoxType) => {
     let measurement: Triplet = [0, 0, 0];
     let position: Triplet = [0, 0, 0];
 
-    const cupboard = {
-        height: 24,
-        width: 12,
-        depth: 6,
-        shelf: 0.2,
-    };
-
     if (type === "top") {
         measurement = [12, 0.2, 6];
         position = [0, 23.8, -0.1];
