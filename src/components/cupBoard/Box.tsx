@@ -8,14 +8,15 @@ import { useEffect } from "react";
 interface Props extends BoxType {
     isHovered?: boolean;
     handleFrontHover?: () => void;
+    color?: string;
 }
 
-export const Box = ({ type, isHovered, handleFrontHover }: Props) => {
+export const Box = ({ type, isHovered, handleFrontHover, color }: Props) => {
     const colorMap = useLoader(TextureLoader, "Wood066_1K_Color.jpg");
     const { position, measurement } = boxHelper({ type });
 
     const [ref, api] = useBox(() => ({ mass: 0, position: position as Triplet }));
-    // const colorHover = isHovered ? "red" : "transparent";
+    // const colorHover = isHovered ? "red" : "none";
 
     useEffect(() => {
         if (type === "frontDoor" && isHovered) {
@@ -37,7 +38,7 @@ export const Box = ({ type, isHovered, handleFrontHover }: Props) => {
             }}
         >
             <boxBufferGeometry attach={"geometry"} args={measurement} />
-            <meshStandardMaterial map={colorMap} color={"#0000ffa7"} />
+            <meshStandardMaterial map={colorMap} color={color} />
         </mesh>
     );
 };

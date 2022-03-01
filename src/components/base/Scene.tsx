@@ -18,11 +18,11 @@ export const Scene = () => {
             <ambientLight intensity={0.5} />
             <spotLight position={[10, 15, 10]} angle={0.9} />
             <Physics>
+                <Box type={"bottom"} />
+                <Box type={"back"} />
                 <Box type={"top"} />
                 <Box type={"sidewallLeft"} />
                 <Box type={"sidewallRight"} />
-                <Box type={"bottom"} />
-                <Box type={"back"} />
                 <Box type={"shelf"} />
                 <Box type={"frontDoor"} isHovered={isHovered} handleFrontHover={onHandleFrontHover} />
                 <Plane />
