@@ -8,7 +8,7 @@ function App() {
     return (
         <>
             <ColorPicker />
-            <Canvas shadows camera={{ position: [30, 20, 50] }}>
+            <Canvas shadows camera={{ position: [30, 35, 40] }}>
                 <Scene />
             </Canvas>
         </>

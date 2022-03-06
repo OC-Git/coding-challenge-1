@@ -21,7 +21,7 @@ export const Scene = (): JSX.Element => {
             <Utility orbitControls axesHelper />
             <AmbientLight intensity={0.7} />
             <Dragable>
-                <Bulb position={[-15, 30, 2]} />
+                <Bulb position={[-10, 30, -10]} />
             </Dragable>
             <Physics>
                 <Cupboard {...cupboard} />
