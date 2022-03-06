@@ -1,41 +1,31 @@
-import { OrbitControls } from "@react-three/drei";
 import { Physics } from "@react-three/cannon";
-import { Box } from "../cupBoard";
-import { Plane } from "../base";
-import { useState } from "react";
+import { Floor, Bulb, AmbientLight, Background } from "../base";
+import { Suspense } from "react";
+import { Cupboard } from "../cupBoard";
+import { Utility } from "../utility/Utility";
+
+const cupboard = {
+    bottom: true,
+    back: true,
+    sidewallLeft: true,
+    sidewallRight: true,
+    top: true,
+    frontDoor: false,
+    shelf: true,
+};
 
 export const Scene = () => {
-    const [isHovered, setIsHovered] = useState<boolean>(false);
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-
-    const onHandleFrontHover = () => {
-        setIsHovered((prev) => !prev);
-    };
-
-    const onHandleFrontDoor = () => {
-        setIsOpen((prev) => !prev);
-    };
-
     return (
         <>
-            <OrbitControls />
-            <ambientLight intensity={0.5} />
-            <spotLight position={[10, 15, 10]} angle={0.9} />
+            <Utility orbitControls axesHelper />
+            <AmbientLight intensity={0.7} />
+            <Bulb position={[-15, 30, 2]} />
             <Physics>
-                <Box type={"bottom"} />
-                <Box type={"back"} />
-                <Box type={"top"} />
-                <Box type={"sidewallLeft"} />
-                <Box type={"sidewallRight"} />
-                <Box type={"shelf"} />
-                <Box
-                    type={"frontDoor"}
-                    isHovered={isHovered}
-                    isOpen={isOpen}
-                    handleFrontHover={onHandleFrontHover}
-                    handleFrontDoor={onHandleFrontDoor}
-                />
-                <Plane />
+                <Cupboard {...cupboard} />
+                <Floor receiveShadow />
+                <Suspense fallback={null}>
+                    <Background />
+                </Suspense>
             </Physics>
         </>
     );

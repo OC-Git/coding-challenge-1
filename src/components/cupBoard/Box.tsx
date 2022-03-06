@@ -1,23 +1,23 @@
+import * as THREE from "three";
 import { Triplet, useBox } from "@react-three/cannon";
 import { BoxType } from "../../interface";
 import { boxHelper } from "../../utility";
-import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { useLoader } from "@react-three/fiber";
 import { useEffect } from "react";
 
 interface Props extends BoxType {
     isHovered?: boolean;
     isOpen?: boolean;
+    isShown?: boolean;
     handleFrontHover?: () => void;
     handleFrontDoor?: () => void;
 }
 
-export const Box = ({ type, isHovered, isOpen, handleFrontHover, handleFrontDoor }: Props) => {
-    const colorMap = useLoader(TextureLoader, "Wood066_1K_Color.jpg");
+export const Box = ({ type, isHovered, isOpen, isShown, handleFrontHover, handleFrontDoor }: Props) => {
+    const texture = useLoader(THREE.TextureLoader, "/wood.jpg");
     const { position, measurement } = boxHelper({ type });
 
-    const [ref, api] = useBox(() => ({ mass: 0, position: position as Triplet }));
-    const colorHover = isHovered ? "red" : "blue";
+    const [ref, api] = useBox(() => ({ mass: 1, position: position as Triplet }));
 
     useEffect(() => {
         if (type === "frontDoor" && isHovered) {
@@ -30,7 +30,6 @@ export const Box = ({ type, isHovered, isOpen, handleFrontHover, handleFrontDoor
 
     useEffect(() => {
         if (isOpen) {
-            // api.position.set(0, 0, 10);
             api.rotation.set(0, Math.PI / 2, 0);
             return;
         }
@@ -40,15 +39,17 @@ export const Box = ({ type, isHovered, isOpen, handleFrontHover, handleFrontDoor
 
     return (
         <mesh
+            castShadow
             ref={ref}
             position={position}
+            visible={isShown}
             onPointerOver={handleFrontHover}
             onPointerOut={handleFrontHover}
             //@ts-ignore
             onClick={handleFrontDoor}
         >
             <boxBufferGeometry attach={"geometry"} args={measurement} />
-            <meshStandardMaterial map={colorMap} color={colorHover} />
+            <meshPhysicalMaterial map={texture} color={"white"} roughness={0.5} clearcoat={1} reflectivity={1} />
         </mesh>
     );
 };

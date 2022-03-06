@@ -5,11 +5,9 @@ import { Scene } from "./components/base/Scene";
 
 function App() {
     return (
-        <>
-            <Canvas camera={{ fov: 80, position: [0, 0, 50] }}>
-                <Scene />
-            </Canvas>
-        </>
+        <Canvas shadows camera={{ position: [30, 20, 50] }}>
+            <Scene />
+        </Canvas>
     );
 }
 

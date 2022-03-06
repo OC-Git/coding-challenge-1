@@ -1,12 +1,13 @@
+import * as THREE from "three";
 import { usePlane } from "@react-three/cannon";
 
-export const Plane = () => {
+export const Floor = (props: any) => {
     const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0] }));
 
     return (
-        <mesh ref={ref} position={[0, 0, -0.1]} rotation={[-Math.PI / 2, 0, 0]}>
+        <mesh ref={ref} {...props}>
             <planeBufferGeometry attach={"geometry"} args={[100, 100]} />
-            <meshStandardMaterial attach={"material"} color={"darkgrey"} />
+            <meshPhysicalMaterial side={THREE.DoubleSide} />
         </mesh>
     );
 };
