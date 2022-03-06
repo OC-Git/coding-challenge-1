@@ -14,7 +14,7 @@ const cupboard = {
     shelf: true,
 };
 
-export const Scene = () => {
+export const Scene = (): JSX.Element => {
     return (
         <>
             <Utility orbitControls axesHelper />

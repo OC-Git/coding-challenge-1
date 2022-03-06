@@ -1,7 +1,11 @@
 import * as THREE from "three";
 import { usePlane } from "@react-three/cannon";
 
-export const Floor = (props: any) => {
+interface Props {
+    receiveShadow?: boolean;
+}
+
+export const Floor = (props: Props): JSX.Element => {
     const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0] }));
 
     return (

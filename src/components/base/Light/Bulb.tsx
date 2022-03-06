@@ -1,4 +1,6 @@
-export const Bulb = (props: any) => {
+import { MeshProps } from "@react-three/fiber";
+
+export const Bulb = (props: MeshProps): JSX.Element => {
     return (
         <mesh {...props}>
             <pointLight castShadow />
