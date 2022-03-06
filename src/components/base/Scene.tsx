@@ -24,9 +24,7 @@ export const Scene = (): JSX.Element => {
                 <Bulb position={[-15, 30, 2]} />
             </Dragable>
             <Physics>
-                <Dragable>
-                    <Cupboard {...cupboard} />
-                </Dragable>
+                <Cupboard {...cupboard} />
                 <Floor receiveShadow />
                 <Suspense fallback={null}>
                     <Background />
