@@ -1,9 +1,9 @@
 import * as THREE from "three";
 import { Triplet, useBox } from "@react-three/cannon";
-import { BoxType } from "../../interface";
+import { BoxColors, BoxType } from "../../interface";
 import { boxHelper } from "../../utility";
 import { useLoader } from "@react-three/fiber";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface Props extends BoxType {
     isHovered?: boolean;
@@ -16,6 +16,7 @@ interface Props extends BoxType {
 export const Box = ({ type, isHovered, isOpen, isShown, handleFrontHover, handleFrontDoor }: Props) => {
     const texture = useLoader(THREE.TextureLoader, "/wood.jpg");
     const { position, measurement } = boxHelper({ type });
+    const [color] = useState<BoxColors>("white");
 
     const [ref, api] = useBox(() => ({ mass: 0, position: position as Triplet }));
 
@@ -49,7 +50,7 @@ export const Box = ({ type, isHovered, isOpen, isShown, handleFrontHover, handle
             onClick={handleFrontDoor}
         >
             <boxBufferGeometry attach={"geometry"} args={measurement} />
-            <meshPhysicalMaterial map={texture} color={"white"} roughness={0.5} clearcoat={1} reflectivity={1} />
+            <meshPhysicalMaterial map={texture} color={color} roughness={0.5} clearcoat={1} reflectivity={1} />
         </mesh>
     );
 };
