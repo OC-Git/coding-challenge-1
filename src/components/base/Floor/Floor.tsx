@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const Floor = (props: Props): JSX.Element => {
-    const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0] }));
+    const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0], position: [0, -1, 0] }));
 
     return (
         <mesh ref={ref} {...props}>
