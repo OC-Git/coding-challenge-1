@@ -17,7 +17,7 @@ export const Box = ({ type, isHovered, isOpen, isShown, handleFrontHover, handle
     const texture = useLoader(THREE.TextureLoader, "/wood.jpg");
     const { position, measurement } = boxHelper({ type });
 
-    const [ref, api] = useBox(() => ({ mass: 1, position: position as Triplet }));
+    const [ref, api] = useBox(() => ({ mass: 0, position: position as Triplet }));
 
     useEffect(() => {
         if (type === "frontDoor" && isHovered) {

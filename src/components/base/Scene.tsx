@@ -3,6 +3,7 @@ import { Floor, Bulb, AmbientLight, Background } from "../base";
 import { Suspense } from "react";
 import { Cupboard } from "../cupBoard";
 import { Utility } from "../utility/Utility";
+import { Dragable } from "./Dragable/Dragable";
 
 const cupboard = {
     bottom: true,
@@ -19,9 +20,13 @@ export const Scene = (): JSX.Element => {
         <>
             <Utility orbitControls axesHelper />
             <AmbientLight intensity={0.7} />
-            <Bulb position={[-15, 30, 2]} />
+            <Dragable>
+                <Bulb position={[-15, 30, 2]} />
+            </Dragable>
             <Physics>
-                <Cupboard {...cupboard} />
+                <Dragable>
+                    <Cupboard {...cupboard} />
+                </Dragable>
                 <Floor receiveShadow />
                 <Suspense fallback={null}>
                     <Background />

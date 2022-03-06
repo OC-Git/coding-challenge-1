@@ -10,7 +10,7 @@ export const Utility = ({ orbitControls = false, axesHelper = false }: Props): J
 
     return (
         <>
-            {orbitControls && <OrbitControls />}
+            {orbitControls && <OrbitControls attach={"orbitControls"} />}
             {axesHelper && <axesHelper args={[100]} />}
         </>
     );
