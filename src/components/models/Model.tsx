@@ -4,7 +4,6 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 interface Props {
     path: string;
     scale: number[];
-    position: Array<number>;
     castShadow: boolean;
 }
 

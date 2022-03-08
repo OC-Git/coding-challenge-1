@@ -5,7 +5,11 @@ import { DragControls } from "three/examples/jsm/controls/DragControls";
 
 extend({ DragControls });
 
-export const Dragable: React.FC = ({ children }): JSX.Element => {
+interface Props {
+    transformGroup?: boolean;
+}
+
+export const Dragable: React.FC<Props> = ({ transformGroup = false, children }): JSX.Element => {
     const {
         camera,
         gl: { domElement },
@@ -31,29 +35,22 @@ export const Dragable: React.FC = ({ children }): JSX.Element => {
         });
 
         controlsRef.current.addEventListener("drag", (event) => {
-            console.log(event.object.api);
-            if (event.object.api) {
-                event.object.api.position.copy(event.object.position);
-                event.object.api.velocity.set(0, 0, 0);
-            }
+            event.object.api?.position.copy(event.object.position);
+            event.object.api?.velocity.set(0, 0, 0);
         });
 
         controlsRef.current.addEventListener("dragstart", (event) => {
-            if (event.object.api) {
-                event.object.api.mass.set(0);
-            }
+            event.object.api?.mass.set(0);
         });
 
         controlsRef.current.addEventListener("dragend", (event) => {
-            if (event.object.api) {
-                event.object.api.mass.set(1);
-            }
+            event.object.api?.mass.set(1);
         });
     }, [boxChildren, scene.orbitControls]);
 
     return (
         <group ref={groupRef}>
-            <dragControls ref={controlsRef} args={[boxChildren, camera, domElement]} />
+            <dragControls transformGroup={transformGroup} ref={controlsRef} args={[boxChildren, camera, domElement]} />
             {children}
         </group>
     );

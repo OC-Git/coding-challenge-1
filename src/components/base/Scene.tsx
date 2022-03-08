@@ -7,6 +7,7 @@ import { Utility } from "../utility/Utility";
 import { Dragable } from "./Dragable/Dragable";
 import { useLoader } from "react-three-fiber";
 import { Model } from "../models/Model";
+import { BoundingBox } from "./BoundingBox/BoundingBox";
 
 const cupboard = {
     bottom: true,
@@ -45,8 +46,12 @@ export const Scene = (): JSX.Element => {
                 <Bulb castShadow position={[-10, 30, -10]} args={[5, 20, 20]} />
             </Dragable>
             <Physics>
+                <Dragable transformGroup>
+                    <BoundingBox visible position={[14, 14, 0]} dims={[8, 20, 5]} offset={[0, 9.85, 0]}>
+                        <Model castShadow scale={new Array(3).fill(0.1)} path={"/lamp/scene.gltf"} />
+                    </BoundingBox>
+                </Dragable>
                 <Cupboard {...cupboard} />
-                <Model castShadow scale={new Array(3).fill(0.1)} path={"/lamp/scene.gltf"} position={[12, 18.7, 0]} />
                 <Dragable>
                     <Cube castShadow position={[-15, 20, 0]} args={[10, 10, 10]} rotation={[1, 1, 0]} />
                     <Cube castShadow position={[-15, 5, 0]} args={[10, 10, 10]} />
