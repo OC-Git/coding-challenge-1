@@ -21,7 +21,7 @@ export const BoundingBox: React.FC<Props> = ({
         <group ref={ref} api={api}>
             <mesh scale={dims} visible={visible}>
                 <boxBufferGeometry />
-                <meshPhysicalMaterial wireframe />
+                <meshPhysicalMaterial wireframe color={"red"} />
             </mesh>
 
             <group position={offset}>{children}</group>
