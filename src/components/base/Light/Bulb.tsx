@@ -1,10 +1,8 @@
-import { MeshProps } from "@react-three/fiber";
-
-export const Bulb = (props: MeshProps): JSX.Element => {
+export const Bulb = ({ position, castShadow, args }: any): JSX.Element => {
     return (
-        <mesh {...props}>
-            <pointLight castShadow />
-            <sphereBufferGeometry args={[5, 20, 20]} />
+        <mesh position={position}>
+            <pointLight castShadow={castShadow} />
+            <sphereBufferGeometry args={args} />
             <meshPhongMaterial emissive={"yellow"} />
         </mesh>
     );

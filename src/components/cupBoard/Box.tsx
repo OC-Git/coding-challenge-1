@@ -18,7 +18,7 @@ export const Box = ({ type, isHovered, isOpen, isShown, handleFrontHover, handle
     const { position, measurement } = boxHelper({ type });
     const [color] = useState<BoxColors>("white");
 
-    const [ref, api] = useBox(() => ({ mass: 0, position: position as Triplet }));
+    const [ref, api] = useBox(() => ({ mass: 0, position: position as Triplet, args: measurement }));
 
     useEffect(() => {
         if (type === "frontDoor" && isHovered) {

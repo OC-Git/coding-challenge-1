@@ -29,6 +29,26 @@ export const Dragable: React.FC = ({ children }): JSX.Element => {
         controlsRef.current.addEventListener("hoveroff", () => {
             scene.orbitControls.enabled = true;
         });
+
+        controlsRef.current.addEventListener("drag", (event) => {
+            console.log(event.object.api);
+            if (event.object.api) {
+                event.object.api.position.copy(event.object.position);
+                event.object.api.velocity.set(0, 0, 0);
+            }
+        });
+
+        controlsRef.current.addEventListener("dragstart", (event) => {
+            if (event.object.api) {
+                event.object.api.mass.set(0);
+            }
+        });
+
+        controlsRef.current.addEventListener("dragend", (event) => {
+            if (event.object.api) {
+                event.object.api.mass.set(1);
+            }
+        });
     }, [boxChildren, scene.orbitControls]);
 
     return (
