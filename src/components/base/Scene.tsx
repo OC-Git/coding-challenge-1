@@ -1,3 +1,4 @@
+import * as THREE from "three";
 import { Physics, useBox } from "@react-three/cannon";
 import { Floor, Bulb, AmbientLight, Background } from "../base";
 import { Suspense } from "react";
@@ -5,7 +6,7 @@ import { Cupboard } from "../cupBoard";
 import { Utility } from "../utility/Utility";
 import { Dragable } from "./Dragable/Dragable";
 import { useLoader } from "react-three-fiber";
-import * as THREE from "three";
+import { Model } from "../models/Model";
 
 const cupboard = {
     bottom: true,
@@ -45,6 +46,7 @@ export const Scene = (): JSX.Element => {
             </Dragable>
             <Physics>
                 <Cupboard {...cupboard} />
+                <Model castShadow scale={new Array(3).fill(0.1)} path={"/lamp/scene.gltf"} position={[12, 18.7, 0]} />
                 <Dragable>
                     <Cube castShadow position={[-15, 20, 0]} args={[10, 10, 10]} rotation={[1, 1, 0]} />
                     <Cube castShadow position={[-15, 5, 0]} args={[10, 10, 10]} />
