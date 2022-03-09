@@ -11,7 +11,7 @@ interface Props {
   shelf: boolean;
 }
 
-export const Cupboard = ({ bottom, back, sidewallLeft, sidewallRight, top, frontDoor, shelf }: Props) => {
+export const Cupboard = ({ bottom, back, sidewallLeft, sidewallRight, top, frontDoor, shelf }: Props): JSX.Element => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 

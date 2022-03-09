@@ -1,9 +1,10 @@
 import { Dragable } from "../Base";
+import { CameraControls } from "../Base/CameraControls/CameraControls";
 import { AmbientLight, Bulb } from "../Elements";
 import { Utility } from "../Utility";
 import { Background } from "./Background/Background";
 
-export const Layout: React.FC = ({ children }) => {
+export const Layout: React.FC = ({ children }): JSX.Element => {
   return (
     <>
       <Utility orbitControls axesHelper />
@@ -12,6 +13,7 @@ export const Layout: React.FC = ({ children }) => {
         <Bulb castShadow position={[-10, 30, -10]} args={[5, 20, 20]} />
       </Dragable>
       {children}
+      <CameraControls />
       <Background />
     </>
   );

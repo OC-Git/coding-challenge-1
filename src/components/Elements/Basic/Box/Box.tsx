@@ -13,7 +13,7 @@ interface Props extends BoxType {
   handleFrontDoor?: () => void;
 }
 
-export const Box = ({ type, isHovered, isOpen, isShown, handleFrontHover, handleFrontDoor }: Props) => {
+export const Box = ({ type, isHovered, isOpen, isShown, handleFrontHover, handleFrontDoor }: Props): JSX.Element => {
   const texture = useLoader(THREE.TextureLoader, "/wood.jpg");
   const { position, measurement } = boxHelper({ type });
   const [color] = useState<BoxColors>("white");

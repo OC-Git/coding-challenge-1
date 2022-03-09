@@ -7,7 +7,7 @@ interface Props {
   castShadow: boolean;
 }
 
-export const Model = (props: Props) => {
+export const Model = (props: Props): JSX.Element => {
   const model = useLoader(GLTFLoader, props.path);
 
   return <primitive object={model.scene} {...props} />;

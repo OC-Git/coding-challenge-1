@@ -13,7 +13,7 @@ export const BoundingBox: React.FC<Props> = ({
   dims = [1, 1, 1],
   visible = false,
   children,
-}) => {
+}): JSX.Element => {
   const [ref, api] = useBox(() => ({ mass: 1, args: dims, position: position }));
 
   return (

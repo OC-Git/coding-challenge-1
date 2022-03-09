@@ -2,7 +2,7 @@ import { useBox } from "@react-three/cannon";
 import { useLoader } from "react-three-fiber";
 import * as THREE from "three";
 
-export const Cube = (props: any) => {
+export const Cube = (props: any): JSX.Element => {
   const texture = useLoader(THREE.TextureLoader, "/woodBright.jpg");
   const [ref, api]: any = useBox(() => ({
     mass: 1,

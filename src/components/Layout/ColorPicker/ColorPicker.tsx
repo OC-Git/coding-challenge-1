@@ -1,9 +1,9 @@
 import * as THREE from "three";
 import { BoxColors } from "../../../interface";
 import "./ColorPicker.scss";
-import { colorPalette } from "../../../constants";
+import { COLOR_PALETTE } from "../../../constants";
 
-export const ColorPicker = () => {
+export const ColorPicker = (): JSX.Element => {
   const onHandleClick = (event: any) => {
     const colorAttribute = event.target.getAttribute("data-color");
 
@@ -14,7 +14,7 @@ export const ColorPicker = () => {
   return (
     <div className={"color-picker"}>
       <div className={"color-picker-flex"}>
-        {colorPalette.map((color) => {
+        {COLOR_PALETTE.map((color) => {
           return (
             <div
               key={color as BoxColors}
