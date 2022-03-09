@@ -21,7 +21,7 @@ export const Scene = (): JSX.Element => {
     <Suspense fallback={null}>
       <Layout>
         <Physics>
-          <Stand />
+          <Stand position={[14, 14, 0]} />
           <Cupboard {...cupboard} />
           <Cubes />
           <Floor receiveShadow args={[100, 100]} />

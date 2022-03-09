@@ -1,44 +1,44 @@
 .color-picker {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .color-picker-flex {
-    display: flex;
-    padding: 1rem;
+  display: flex;
+  padding: 1rem;
 }
 
 .color-picker__box {
-    height: 4rem;
-    width: 4rem;
-    margin-right: 0.5rem;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
+  height: 4rem;
+  width: 4rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
 
-    &:nth-child(1) {
-        background-color: red;
+  &:nth-child(1) {
+    background-color: red;
 
-        &:hover {
-            background-color: darken(red, 10%);
-        }
+    &:hover {
+      background-color: darken(red, 10%);
     }
+  }
 
-    &:nth-child(2) {
-        background-color: grey;
+  &:nth-child(2) {
+    background-color: yellow;
 
-        &:hover {
-            background-color: lighten(black, 60%);
-        }
+    &:hover {
+      background-color: darken(yellow, 10%);
     }
+  }
 
-    &:nth-child(3) {
-        background-color: white;
+  &:nth-child(3) {
+    background-color: white;
 
-        &:hover {
-            background-color: darken(white, 5%);
-        }
+    &:hover {
+      background-color: darken(white, 5%);
     }
+  }
 }

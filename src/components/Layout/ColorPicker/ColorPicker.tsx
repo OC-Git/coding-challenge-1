@@ -1,14 +1,18 @@
 import * as THREE from "three";
-import { BoxColors } from "../../../interface";
 import "./ColorPicker.scss";
+import { state } from "../../../store";
+import { BoxColors } from "../../../interface";
 import { COLOR_PALETTE } from "../../../constants";
 
 export const ColorPicker = (): JSX.Element => {
   const onHandleClick = (event: any) => {
-    const colorAttribute = event.target.getAttribute("data-color");
+    if (!state.activeMesh) return;
 
+    const colorAttribute = event.target.getAttribute("data-color");
     const color = new THREE.Color(colorAttribute);
-    console.log(color);
+
+    //@ts-ignore
+    state.activeMesh.material.color = color;
   };
 
   return (
