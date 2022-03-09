@@ -13,7 +13,7 @@ export const Cube = (props: any): JSX.Element => {
   }));
 
   return (
-    <mesh api={api} ref={ref} {...props}>
+    <mesh api={api} ref={ref} {...props} name={props.name}>
       <boxBufferGeometry args={props.args} />
       <meshPhysicalMaterial map={texture} color={"white"} roughness={0} clearcoat={1} reflectivity={1} />
     </mesh>

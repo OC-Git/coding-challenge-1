@@ -12,6 +12,8 @@ export const ColorPicker = (): JSX.Element => {
     const color = new THREE.Color(colorAttribute);
 
     //@ts-ignore
+    state.activeColor = color;
+    //@ts-ignore
     state.activeMesh.material.color = color;
   };
 
