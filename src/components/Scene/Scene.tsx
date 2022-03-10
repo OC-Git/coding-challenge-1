@@ -5,6 +5,7 @@ import { Stand } from "../Models/Stand";
 import { Layout } from "../Layout/Layout";
 import { Cubes } from "../Mesh/Cubes";
 import { Floor } from "../Layout";
+import { Effects as EffectComposer } from "../Base/EffectComposer/EffectComposer";
 
 const cupboard = {
   bottom: true,
@@ -26,6 +27,7 @@ export const Scene = (): JSX.Element => {
           <Cubes />
           <Floor receiveShadow args={[100, 100]} />
         </Physics>
+        <EffectComposer />
       </Layout>
     </Suspense>
   );

@@ -9,7 +9,16 @@ function App() {
   return (
     <>
       <ColorPicker />
-      <Canvas shadows camera={{ position: [30, 35, 40] }}>
+      <Canvas
+        shadows
+        camera={{ position: [30, 35, 40] }}
+        // gl={{
+        //   powerPreference: "high-performance",
+        //   antialias: false,
+        //   stencil: false,
+        //   depth: false,
+        // }}
+      >
         <Scene />
       </Canvas>
       <CameraPerspective />
